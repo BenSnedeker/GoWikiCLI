@@ -2,7 +2,7 @@ package api
 
 import (
 	"fmt"
-	"gowiki/internal/utils"
+	"gowikicli/internal/utils"
 )
 
 // -------------

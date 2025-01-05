@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gowiki/internal/parser"
+	"gowikicli/internal/parser"
 	"os"
 )
 

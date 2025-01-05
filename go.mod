@@ -1,3 +1,3 @@
-module gowiki
+module gowikicli
 
 go 1.21

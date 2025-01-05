@@ -2,8 +2,8 @@ package parser
 
 import (
 	"fmt"
-	"gowiki/internal/api"
-	"gowiki/internal/utils"
+	"gowikicli/internal/api"
+	"gowikicli/internal/utils"
 	"strings"
 )
 
