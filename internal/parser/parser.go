@@ -2,9 +2,10 @@ package parser
 
 import (
 	"fmt"
-	"gowikicli/internal/api"
 	"gowikicli/internal/utils"
 	"strings"
+
+	"github.com/BenSnedeker/GoWiki/gowiki"
 )
 
 // Parse command and arguments then handle command
@@ -31,7 +32,7 @@ func HandleInput(args []string) error {
 		query := parseSearch(args[2:])
 
 		// Call API using query
-		api.HandleSearch(query)
+		gowiki.HandleSearch(query)
 
 	case "read":
 		// If there aren't any arguments
@@ -46,7 +47,7 @@ func HandleInput(args []string) error {
 		}
 
 		// Call API using flags and query
-		api.HandleRead(flags, query)
+		gowiki.HandleRead(flags, query)
 
 	default:
 		return fmt.Errorf("command not recognized -> \"%s\"", command)
@@ -59,8 +60,8 @@ func HandleInput(args []string) error {
 //    FLAGS
 // -------------
 
-func parseFlags(flag_args []string) (utils.Flags, error) {
-	flags := utils.NewFlags()
+func parseFlags(flag_args []string) (gowiki.Flags, error) {
+	flags := gowiki.NewFlags()
 
 	// For each flag arg, alter flags or throw error
 	for _, arg := range flag_args {
@@ -96,7 +97,7 @@ func parseSearch(args []string) string {
 //     READ
 // -------------
 
-func parseRead(args []string) (utils.Flags, string, error) {
+func parseRead(args []string) (gowiki.Flags, string, error) {
 	var flag_args []string
 	query := ""
 

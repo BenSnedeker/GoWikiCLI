@@ -1,90 +1,63 @@
 package utils
 
-type Flags struct {
-	html       bool
-	text       bool
-	all        bool
-	limited    bool
-	summary    bool
-	references bool
-	wikilinks  bool
-	clean      bool
-	fancy      bool
-}
+import "github.com/BenSnedeker/GoWiki/gowiki"
 
-func NewFlags() Flags {
-	return Flags{
-		// Raw HTML or tagless string
-		html: false,
-		text: true,
-		// Which sections to return
-		all:        false,
-		limited:    true,
-		summary:    false,
-		references: false,
-		wikilinks:  false,
-		// Raw string or colored string
-		clean: false,
-		fancy: true,
-	}
-}
-
-func UpdateTextFlags(arg string, f Flags) Flags {
+func UpdateTextFlags(arg string, f gowiki.Flags) gowiki.Flags {
 	switch arg {
 	case "--html", "-h":
-		f.html = true
-		f.text = false
+		f.Html = true
+		f.Text = false
 	case "--text", "-t":
-		f.html = false
-		f.text = true
+		f.Html = false
+		f.Text = true
 	}
 	return f
 }
 
-func UpdateSectionFlags(arg string, f Flags) Flags {
+func UpdateSectionFlags(arg string, f gowiki.Flags) gowiki.Flags {
 	switch arg {
 	case "--all", "-a":
-		f.all = true
-		f.limited = false
-		f.summary = false
-		f.references = false
-		f.wikilinks = false
+		f.All = true
+		f.Limited = false
+		f.Summary = false
+		f.References = false
+		f.Wikilinks = false
 	case "--limited", "-l":
-		f.all = false
-		f.limited = true
-		f.summary = false
-		f.references = false
-		f.wikilinks = false
+		f.All = false
+		f.Limited = true
+		f.Summary = false
+		f.References = false
+		f.Wikilinks = false
 	case "--summary", "-s":
-		f.all = false
-		f.limited = false
-		f.summary = true
-		f.references = false
-		f.wikilinks = false
+		f.All = false
+		f.Limited = false
+		f.Summary = true
+		f.References = false
+		f.Wikilinks = false
 	case "--references", "-r":
-		f.all = false
-		f.limited = false
-		f.summary = false
-		f.references = true
-		f.wikilinks = false
+		f.All = false
+		f.Limited = false
+		f.Summary = false
+		f.References = true
+		f.Wikilinks = false
 	case "--wikilinks", "-w":
-		f.all = false
-		f.limited = false
-		f.summary = false
-		f.references = false
-		f.wikilinks = true
+		f.All = false
+		f.Limited = false
+		f.Summary = false
+		f.References = false
+		f.Wikilinks = true
 	}
 	return f
 }
 
-func UpdateVisualFlags(arg string, f Flags) Flags {
+func UpdateVisualFlags(arg string, f gowiki.Flags) gowiki.Flags {
 	switch arg {
 	case "--clean", "-c":
-		f.clean = true
-		f.fancy = false
+		f.Clean = true
+		f.Fancy = false
 	case "--fancy", "-f":
-		f.clean = false
-		f.fancy = true
+		f.Clean = false
+		f.Fancy = true
 	}
 	return f
 }
